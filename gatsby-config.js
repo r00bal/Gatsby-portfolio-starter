@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `frontendPanda`,
+    title: `frontend panda`,
     description: `Portfolio page of aspiring young frontend developer who want to by a javascript master one day.`,
-    author: `@frontendPanad`,
+    author: `@frontendPanda`,
   },
   plugins: [
     {

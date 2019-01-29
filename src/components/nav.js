@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
@@ -41,31 +42,38 @@ const NavStyles = styled.nav`
     }
   }
 `
+const PAGE_TITLE_QUERY = graphql`
+  query PageTitleQuery {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+`
+
 const Nav = ({ style, click }) => (
-  <NavStyles style={style}>
-    <ul>
-      <li>
-        <Link onClick={click} to="/">
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link onClick={click} to="/about">
-          About
-        </Link>
-      </li>
-      <li>
-        <Link onClick={click} to="/projects">
-          Project
-        </Link>
-      </li>
-      <li>
-        <Link onClick={click} to="/contact">
-          Contact
-        </Link>
-      </li>
-    </ul>
-  </NavStyles>
+  <StaticQuery
+    query={PAGE_TITLE_QUERY}
+    render={({ allMarkdownRemark }) => (
+      <NavStyles style={style}>
+        <ul>
+          {allMarkdownRemark.edges.map(edge => (
+            <li>
+              <Link onClick={click} to={`${edge.node.frontmatter.slug}`}>
+                {edge.node.frontmatter.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </NavStyles>
+    )}
+  />
 )
 
 export default Nav
