@@ -3,13 +3,13 @@ import { Link } from 'gatsby'
 
 import SEO from '../components/seo'
 
-const Projects = () => (
+const Contact = () => (
   <>
-    <SEO title="Projects" />
-    <h1>Check some of my stuff</h1>
+    <SEO title="Contact" />
+    <h1>Stay in tuch!</h1>
 
     <Link to="/">Go back to the homepage</Link>
   </>
 )
 
-export default Projects
+export default Contact

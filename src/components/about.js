@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const SecondPage = () => (
+const About = () => (
   <>
     <SEO title="About" />
     <h1>Hi from about page</h1>
@@ -13,4 +12,4 @@ const SecondPage = () => (
   </>
 )
 
-export default SecondPage
+export default About

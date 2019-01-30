@@ -1,14 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
-import SEO from '../components/seo'
+import Contact from '../components/contact'
 
 const ContactPage = () => (
   <>
-    <SEO title="Contact" />
-    <h1>Stay in tuch!</h1>
-
-    <Link to="/">Go back to the homepage</Link>
+    <Contact />
   </>
 )
 
