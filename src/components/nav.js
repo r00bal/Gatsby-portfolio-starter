@@ -44,12 +44,13 @@ const NavStyles = styled.nav`
 `
 const PAGE_TITLE_QUERY = graphql`
   query PageTitleQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___id] }) {
       edges {
         node {
           frontmatter {
             title
             slug
+            id
           }
         }
       }

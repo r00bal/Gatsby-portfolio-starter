@@ -128,10 +128,6 @@ class Layout extends Component {
                   <Footer>
                     © {new Date().getFullYear()}, Built with Panda
                   </Footer>
-
-                  {/* <MainLayout>
-                  <div>{children}</div>
-                </MainLayout> */}
                 </LayoutWrapper>
               )}
             </Spring>
