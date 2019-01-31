@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-
+import { rhythm } from '../utils/typography'
 const NavStyles = styled.nav`
   grid-area: Sidebar;
   width: 60%;
   height: 100%;
   background: lightcyan;
   margin: 0;
-  padding: 1.5rem;
+  padding: ${rhythm(1)};
   display: flex;
   position: fixed;
   top: 0;
@@ -27,16 +27,15 @@ const NavStyles = styled.nav`
     margin-top: 100px;
   }
   li {
-    padding-bottom: 1rem;
+    font-size: ${rhythm(1)};
+    font-weight: 500;
+    padding-bottom: ${rhythm(1)};
   }
 
   a {
     color: #797979;
     text-decoration: none;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
+
     &:hover {
       color: salmon;
     }

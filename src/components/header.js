@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { rhythm } from '../utils/typography'
 
 const HeaderWrapper = styled.header`
   grid-area: Header;
@@ -10,7 +11,6 @@ const HeaderWrapper = styled.header`
 `
 
 const MenuButton = styled.button`
-  /* position: fixed; */
   z-index: 100;
 `
 
@@ -21,15 +21,13 @@ const HeaderContainer = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 6fr 1fr;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 1rem;
+
   button {
     justify-self: start;
     margin: 0;
     padding: 0;
-    color: #797979;
-    font-weight: 400;
+
+    font-size: ${rhythm(0.8)};
     background: none;
     border: none;
     outline: none;
@@ -41,15 +39,11 @@ const HeaderContainer = styled.div`
     justify-self: end;
     margin: 0;
     padding: 0;
-    color: #797979;
-    font-weight: 400;
-    font-size: 1rem;
+    font-size: ${rhythm(0.8)};
+    line-height: 0;
     a {
       color: inherit;
       text-decoration: none;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      font-size: inherit;
       white-space: nowrap;
     }
     &:hover {

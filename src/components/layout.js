@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import styled, { ThemeProvider, InjectGlobal } from 'styled-components'
 import { Transition, Spring, config } from 'react-spring'
+import { rhythm } from '../utils/typography'
 
 import Nav from './nav'
 import Header from './header'
