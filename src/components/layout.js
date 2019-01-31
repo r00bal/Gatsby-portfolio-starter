@@ -38,12 +38,6 @@ const MainLayout = styled.main`
   display: grid;
   justify-items: center;
   align-items: center;
-  div {
-  }
-
-  .BFG {
-    font-size: 7rem;
-  }
 `
 
 const Footer = styled.footer`
@@ -105,7 +99,7 @@ class Layout extends Component {
                     }
                   </Transition>
                   <Spring
-                    delay={300}
+                    delay={200}
                     config={config.slow}
                     immediate={this.state.toggleNav === undefined}
                     from={{

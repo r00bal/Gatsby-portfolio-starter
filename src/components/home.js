@@ -1,16 +1,40 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import SEO from '../components/seo'
+import { Link, StaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
+
+const HomeStyles = styled.section`
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1rem;
+  .BFG {
+    font-size: 7rem;
+  }
+`
 
 const Home = () => (
-  <>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1 className="BFG">
-      HELLO <br />
-      WORLD .
-    </h1>
-    <Link to="/page-2/">Go to page 2</Link>
-  </>
+  <StaticQuery
+    query={graphql`
+      query {
+        markdownRemark(frontmatter: { slug: { eq: "/" } }) {
+          frontmatter {
+            title
+            subtitle
+          }
+          html
+        }
+      }
+    `}
+    render={({ markdownRemark }) => (
+      <HomeStyles>
+        <h1 className="BFG">{markdownRemark.frontmatter.subtitle}</h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: markdownRemark.html,
+          }}
+        />
+      </HomeStyles>
+    )}
+  />
 )
 
 export default Home

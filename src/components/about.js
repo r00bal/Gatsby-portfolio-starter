@@ -1,15 +1,29 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
-import SEO from '../components/seo'
+import { Link, StaticQuery, graphql } from 'gatsby'
 
 const About = () => (
-  <>
-    <SEO title="About" />
-    <h1>Hi from about page</h1>
-    <p>Somthing about me</p>
-    <Link to="/">Go back to the homepage</Link>
-  </>
+  <StaticQuery
+    query={graphql`
+      query {
+        markdownRemark(frontmatter: { slug: { eq: "/about" } }) {
+          frontmatter {
+            title
+          }
+          html
+        }
+      }
+    `}
+    render={({ markdownRemark }) => (
+      <>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: markdownRemark.html,
+          }}
+        />
+      </>
+    )}
+  />
 )
 
 export default About

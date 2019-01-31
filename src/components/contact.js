@@ -1,15 +1,28 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
-import SEO from '../components/seo'
+import { Link, StaticQuery, graphql } from 'gatsby'
 
 const Contact = () => (
-  <>
-    <SEO title="Contact" />
-    <h1>Stay in tuch!</h1>
-
-    <Link to="/">Go back to the homepage</Link>
-  </>
+  <StaticQuery
+    query={graphql`
+      query {
+        markdownRemark(frontmatter: { slug: { eq: "/contact" } }) {
+          frontmatter {
+            title
+          }
+          html
+        }
+      }
+    `}
+    render={({ markdownRemark }) => (
+      <>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: markdownRemark.html,
+          }}
+        />
+      </>
+    )}
+  />
 )
 
 export default Contact

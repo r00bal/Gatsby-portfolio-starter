@@ -65,7 +65,7 @@ const Nav = ({ style, click }) => (
       <NavStyles style={style}>
         <ul>
           {allMarkdownRemark.edges.map(edge => (
-            <li>
+            <li key={edge.node.frontmatter.slug}>
               <Link onClick={click} to={`${edge.node.frontmatter.slug}`}>
                 {edge.node.frontmatter.title}
               </Link>
