@@ -31,6 +31,7 @@ const LayoutWrapper = styled.div`
 const MainLayout = styled.main`
   grid-area: Main;
   width: 100%;
+  max-width: 1000px;
   text-align: center;
   background: none;
   /* display: flex;

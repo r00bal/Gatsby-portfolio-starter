@@ -5,13 +5,16 @@ module.exports = {
     author: `@frontendPanda`,
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout.js`),
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -26,8 +29,7 @@ module.exports = {
         path: `${__dirname}/src/assets/pages/`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -55,7 +57,7 @@ module.exports = {
         plugins: [],
       },
     },
-    `gatsby-plugin-emotion`,
+
     {
       resolve: `gatsby-plugin-typography`,
       options: {
