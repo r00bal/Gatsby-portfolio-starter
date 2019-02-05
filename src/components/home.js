@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 const HomeStyles = styled.section`
-  .BFG {
-    font-size: 7rem;
-  }
+  margin: 0 auto;
 `
 
 const Home = () => (
@@ -16,21 +15,38 @@ const Home = () => (
           frontmatter {
             title
             subtitle
+            img {
+              childImageSharp {
+                fluid(maxWidth: 500) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
-          html
         }
       }
     `}
-    render={({ markdownRemark }) => (
-      <HomeStyles>
-        <h1 className="BFG">{markdownRemark.frontmatter.subtitle}</h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: markdownRemark.html,
-          }}
-        />
-      </HomeStyles>
-    )}
+    render={({ markdownRemark }) => {
+      console.log(markdownRemark)
+      return (
+        <HomeStyles>
+          <Img
+            fluid={markdownRemark.frontmatter.img.childImageSharp.fluid}
+            style={{
+              margin: `0 auto`,
+              maxWidth: `300px`,
+              display: `block`,
+              height: `auto`,
+            }}
+          />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: markdownRemark.html,
+            }}
+          />
+        </HomeStyles>
+      )
+    }}
   />
 )
 

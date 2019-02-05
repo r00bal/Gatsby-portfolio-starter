@@ -77,10 +77,10 @@ class Layout extends Component {
               config={{ duration: 200 }}
               immediate={this.state.toggleNav === undefined}
               from={{
-                backgroundColor: toggleNav ? '#fff' : '#797979',
+                backgroundColor: toggleNav ? '#fff' : '#fff',
               }}
               to={{
-                backgroundColor: toggleNav ? '#797979' : '#fff',
+                backgroundColor: toggleNav ? '#fff' : '#fff',
               }}
             >
               {styles => (
