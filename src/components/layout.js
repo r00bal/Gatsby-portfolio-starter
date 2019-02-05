@@ -31,14 +31,16 @@ const LayoutWrapper = styled.div`
 const MainLayout = styled.main`
   grid-area: Main;
   width: 100%;
+  height: 100%;
   max-width: 1000px;
   text-align: center;
   background: none;
+  margin: 0 auto;
   /* display: flex;
   flex-direction: column;
   justify-content: center; */
   display: grid;
-  justify-items: center;
+  /* justify-items: center; */
   align-items: center;
 `
 
