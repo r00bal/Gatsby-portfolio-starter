@@ -1,29 +1,32 @@
-// const path = require('path')
+const path = require('path')
 
-// exports.createPages = async ({ graphql, actions }) => {
-//   const { createPage } = actions
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
-//   const result = await graphql(`
-//     {
-//       allMarkdownRemark {
-//         edges {
-//           node {
-//             frontmatter {
-//               slug
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `)
-
-//   return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-//     createPage({
-//       path: `/siteprojects${node.frontmatter.slug}`,
-//       component: path.resolve('./src/components/page.js'),
-//       context: {
-//         slug: node.frontmatter.slug,
-//       },
-//     })
-//   })
-// }
+  const result = await graphql(`
+    {
+      allFile(filter: { dir: { regex: "/projects/" } }) {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  console.log(result)
+  return result.data.allFile.edges.forEach(({ node }) => {
+    console.log(node)
+    createPage({
+      path: `/projects${node.childMarkdownRemark.frontmatter.slug}`,
+      component: path.resolve('./src/components/page.js'),
+      context: {
+        slug: node.childMarkdownRemark.frontmatter.slug,
+      },
+    })
+  })
+}
