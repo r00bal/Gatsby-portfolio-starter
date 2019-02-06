@@ -18,6 +18,7 @@ const theme = {
 
 const LayoutWrapper = styled.div`
   /* grid-gap: 20px; */
+
   width: 100%;
   height: 100%;
   display: grid;
@@ -27,6 +28,16 @@ const LayoutWrapper = styled.div`
     'Header  Header  Header'
     'Main Main Main'
     'Footer  Footer  Footer';
+  .grey {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 0;
+  }
 `
 const MainLayout = styled.main`
   grid-area: Main;
@@ -84,7 +95,8 @@ class Layout extends Component {
               }}
             >
               {styles => (
-                <LayoutWrapper style={styles}>
+                <LayoutWrapper>
+                  {/* <div className="grey" style={styles} /> */}
                   <Header
                     click={this.handleClick}
                     open={toggleNav}

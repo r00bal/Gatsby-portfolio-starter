@@ -5,7 +5,7 @@ import Image from './Image'
 import Img from 'gatsby-image'
 
 const ProjectLayout = styled.div`
-padding:1rem
+  padding: 1rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -23,7 +23,12 @@ const Projects = () => (
           }
           html
         }
-        allFile(filter: { relativePath: { regex: "/project_/" } }) {
+        allFile(
+          filter: {
+            relativePath: { regex: "/project_/" }
+            sourceInstanceName: { eq: "images" }
+          }
+        ) {
           edges {
             node {
               childImageSharp {

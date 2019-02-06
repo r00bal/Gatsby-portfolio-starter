@@ -57,7 +57,9 @@ const Header = ({ siteTitle, open, click, style }) => (
     <HeaderContainer>
       <MenuButton onClick={click}>{!open ? 'menu' : 'close'}</MenuButton>
       <div />
-      <h1>{!open && <Link to="/">{siteTitle}</Link>}</h1>
+      <h1>
+        <Link to="/">{siteTitle}</Link>
+      </h1>
     </HeaderContainer>
   </HeaderWrapper>
 )
