@@ -15,13 +15,13 @@ const Home = () => (
           frontmatter {
             title
             subtitle
-            img {
-              childImageSharp {
-                fluid(maxWidth: 500) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+            # img {
+            #   childImageSharp {
+            #     fluid(maxWidth: 500) {
+            #       ...GatsbyImageSharpFluid
+            #     }
+            #   }
+            # }
           }
         }
       }
@@ -30,7 +30,7 @@ const Home = () => (
       console.log(markdownRemark)
       return (
         <HomeStyles>
-          <Img
+          {/* <Img
             fluid={markdownRemark.frontmatter.img.childImageSharp.fluid}
             style={{
               margin: `0 auto`,
@@ -38,7 +38,7 @@ const Home = () => (
               display: `block`,
               height: `auto`,
             }}
-          />
+          /> */}
           <div
             dangerouslySetInnerHTML={{
               __html: markdownRemark.html,

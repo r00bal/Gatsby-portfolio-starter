@@ -15,6 +15,7 @@ module.exports = {
         component: require.resolve(`./src/components/layout.js`),
       },
     },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -23,19 +24,17 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-remark-images`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        // It's important to specify the maxWidth (in pixels) of
-        // the content container as this plugin uses this as the
-        // base for generating different widths of each image.
-        maxWidth: 590,
+        name: `projects`,
+        path: `${__dirname}/src/assets/projects`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/assets/pages/`,
+        path: `${__dirname}/src/assets/pages`,
       },
     },
 
@@ -66,7 +65,15 @@ module.exports = {
         plugins: [],
       },
     },
-
+    {
+      resolve: `gatsby-remark-images`,
+      options: {
+        // It's important to specify the maxWidth (in pixels) of
+        // the content container as this plugin uses this as the
+        // base for generating different widths of each image.
+        maxWidth: 590,
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
