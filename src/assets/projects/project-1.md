@@ -8,5 +8,3 @@ projectImages:
 ---
 
 # this super coool awesome project !!
-
-<img src="../images/7ef8a0aa56eea3e9caca6db75be00a86.jpg" title="A cute kitten" width="150" height="100" />
