@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 // Static query
 //cqn be used anywhere, doesn't accept variable, can't use context
@@ -15,6 +15,7 @@ const page = ({ data }) => (
         __html: data.markdownRemark.html,
       }}
     />
+    <Link to={`/projects`}> Back to project list</Link>
   </>
 )
 

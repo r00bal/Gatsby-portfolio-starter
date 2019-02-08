@@ -1,7 +1,7 @@
 ---
 title: 'fee'
 slug: '/fee'
-img: '../images'
+img: '../images/project_fee.jpg'
 ---
 
 # this super coool awesome project !!

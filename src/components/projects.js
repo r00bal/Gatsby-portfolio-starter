@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Image from './Image'
 import Img from 'gatsby-image'
@@ -17,24 +17,32 @@ const Projects = () => (
   <StaticQuery
     query={graphql`
       query {
-        markdownRemark(frontmatter: { slug: { eq: "/projects" } }) {
+        ProjectPage: markdownRemark(
+          frontmatter: { slug: { eq: "/projects" } }
+        ) {
           frontmatter {
             title
           }
           html
         }
-        allFile(
+        allProjects: allFile(
           filter: {
-            relativePath: { regex: "/project_/" }
-            sourceInstanceName: { eq: "images" }
+            internal: { mediaType: { eq: "text/markdown" } }
+            sourceInstanceName: { eq: "projects" }
           }
         ) {
           edges {
             node {
-              childImageSharp {
-                fluid(maxWidth: 500) {
-                  ...GatsbyImageSharpFluid
-                  presentationWidth
+              childMarkdownRemark {
+                frontmatter {
+                  slug
+                  img {
+                    childImageSharp {
+                      fluid(maxWidth: 500) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -42,16 +50,23 @@ const Projects = () => (
         }
       }
     `}
-    render={({ allFile }) => {
-      console.log(allFile)
+    render={({ allProjects }) => {
+      console.log(allProjects)
       return (
         <ProjectLayout>
-          {allFile.edges.map(({ node }) => (
-            <Img
-              fluid={node.childImageSharp.fluid}
-              style={{ display: `block`, height: `auto` }}
-              imgStyle={{ height: `auto` }}
-            />
+          {allProjects.edges.map(({ node }) => (
+            <Link
+              key={node.childMarkdownRemark.frontmatter.slug}
+              to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
+            >
+              <Img
+                fluid={
+                  node.childMarkdownRemark.frontmatter.img.childImageSharp.fluid
+                }
+                style={{ display: `block`, height: `auto` }}
+                imgStyle={{ height: `auto` }}
+              />
+            </Link>
           ))}
         </ProjectLayout>
       )
@@ -59,4 +74,13 @@ const Projects = () => (
   />
 )
 
+// <ProjectLayout>
+//   {allProjects.edges.map(({ node }) => (
+//     <Img
+//       fluid={node.childMarkdownRemark.frontmatter.img.childImageSharp.fluid}
+//       style={{ display: `block`, height: `auto` }}
+//       imgStyle={{ height: `auto` }}
+//     />
+//   ))}
+// </ProjectLayout>
 export default Projects

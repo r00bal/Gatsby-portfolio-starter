@@ -1,7 +1,7 @@
 ---
 title: 'swnowrds'
 slug: '/snowrds'
-img: '../images'
+img: '../images/project_snowrds.jpg'
 ---
 
 # this super coool awesome project !!
