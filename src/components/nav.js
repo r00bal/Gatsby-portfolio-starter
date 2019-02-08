@@ -43,7 +43,10 @@ const NavStyles = styled.nav`
 `
 const PAGE_TITLE_QUERY = graphql`
   query PageTitleQuery {
-    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___id] }) {
+    allMarkdownRemark(
+      sort: { order: ASC, fields: [frontmatter___id] }
+      filter: { fileAbsolutePath: { regex: "/pages/" } }
+    ) {
       edges {
         node {
           frontmatter {
