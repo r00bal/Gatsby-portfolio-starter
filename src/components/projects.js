@@ -8,9 +8,15 @@ const ProjectLayout = styled.div`
   padding: 1rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
   justify-content: center;
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const Projects = () => (
@@ -38,8 +44,8 @@ const Projects = () => (
                   slug
                   img {
                     childImageSharp {
-                      fluid(maxWidth: 500) {
-                        ...GatsbyImageSharpFluid
+                      sizes(maxWidth: 500) {
+                        ...GatsbyImageSharpSizes
                       }
                     }
                   }
@@ -55,18 +61,35 @@ const Projects = () => (
       return (
         <ProjectLayout>
           {allProjects.edges.map(({ node }) => (
-            <Link
-              key={node.childMarkdownRemark.frontmatter.slug}
-              to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
+            <div
+              style={{
+                width: '100%',
+                display: 'grid',
+                alignContent: 'center',
+              }}
             >
-              <Img
-                fluid={
-                  node.childMarkdownRemark.frontmatter.img.childImageSharp.fluid
-                }
-                style={{ display: `block`, height: `auto` }}
-                imgStyle={{ height: `auto` }}
-              />
-            </Link>
+              <Link
+                key={node.childMarkdownRemark.frontmatter.slug}
+                to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
+              >
+                <Img
+                  src={
+                    node.childMarkdownRemark.frontmatter.img.childImageSharp
+                      .sizes.src
+                  }
+                  sizes={
+                    node.childMarkdownRemark.frontmatter.img.childImageSharp
+                      .sizes
+                  }
+                  style={{
+                    width: 'auto',
+                    // maxWidth: '300px',
+                    height: 'auto',
+                    // maxHeight: '300px',
+                  }}
+                />
+              </Link>
+            </div>
           ))}
         </ProjectLayout>
       )
