@@ -45,7 +45,6 @@ module.exports = {
         path: `${__dirname}/src/assets/projects/`,
       },
     },
-
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -73,7 +72,6 @@ module.exports = {
         plugins: [],
       },
     },
-
     {
       resolve: `gatsby-plugin-typography`,
       options: {
