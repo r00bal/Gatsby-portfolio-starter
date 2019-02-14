@@ -9,8 +9,11 @@ const ProjectLayout = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+
   grid-gap: 1rem;
-  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: end;
   @media (max-width: 1000px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -61,35 +64,41 @@ const Projects = () => (
       return (
         <ProjectLayout>
           {allProjects.edges.map(({ node }) => (
-            <div
+            // <div
+            //   style={{
+            //     width: '100%',
+            //     display: 'grid',
+            //     alignContent: 'center',
+            //   }}
+            // >
+            <Link
+              key={node.childMarkdownRemark.frontmatter.slug}
+              to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
               style={{
                 width: '100%',
-                display: 'grid',
-                alignContent: 'center',
+                height: '100%',
+                maxWidth: '300px',
+                maxHeight: '300px',
               }}
             >
-              <Link
-                key={node.childMarkdownRemark.frontmatter.slug}
-                to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
-              >
-                <Img
-                  src={
-                    node.childMarkdownRemark.frontmatter.img.childImageSharp
-                      .sizes.src
-                  }
-                  sizes={
-                    node.childMarkdownRemark.frontmatter.img.childImageSharp
-                      .sizes
-                  }
-                  style={{
-                    width: 'auto',
-                    // maxWidth: '300px',
-                    height: 'auto',
-                    // maxHeight: '300px',
-                  }}
-                />
-              </Link>
-            </div>
+              <Img
+                src={
+                  node.childMarkdownRemark.frontmatter.img.childImageSharp.sizes
+                    .src
+                }
+                sizes={
+                  node.childMarkdownRemark.frontmatter.img.childImageSharp.sizes
+                }
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+
+                  maxWidth: '300px',
+                  maxHeight: '300px',
+                }}
+              />
+            </Link>
+            // </div>
           ))}
         </ProjectLayout>
       )

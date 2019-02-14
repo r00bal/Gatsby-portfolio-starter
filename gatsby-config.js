@@ -22,15 +22,7 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    {
-      resolve: `gatsby-remark-images`,
-      options: {
-        // It's important to specify the maxWidth (in pixels) of
-        // the content container as this plugin uses this as the
-        // base for generating different widths of each image.
-        maxWidth: 590,
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -60,16 +52,22 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        // CommonMark mode (default: true)
-        commonmark: true,
-        // Footnotes mode (default: true)
-        footnotes: true,
-        // Pedantic mode (default: true)
-        pedantic: true,
-        // GitHub Flavored Markdown mode (default: true)
         gfm: true,
+        commonmark: true,
+        footnotes: true,
+        pedantic: true,
         // Plugins configs
-        plugins: [],
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 590,
+            },
+          },
+        ],
       },
     },
     {
