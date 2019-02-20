@@ -7,10 +7,6 @@ projectImages:
   - '../images/bladerunner.jpg'
 ---
 
-# This super cool awesome project !!
-
-This projects uh ah what a project
-
 ## Pulp fiction is awesome move
 
 The best move ever

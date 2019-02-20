@@ -20,9 +20,12 @@ import { groupBy } from '../utils/func.js'
 
 const PageWrapper = styled.div`
   padding: 1rem;
-
   display: grid;
-  grid-template-columns: 1fr 3fr 2fr 1fr;
+  grid-template-columns: 50px 1fr 1fr 50px;
+  grid-template-rows: 500px 100px;
+  grid-template-areas:
+    'prev image descrption next'
+    '....  backPage backPage ....';
   grid-gap: 1rem;
   align-items: center;
   justify-items: center;
@@ -35,7 +38,41 @@ const PageWrapper = styled.div`
     border: none;
     outline: none;
   }
+
+  .descrption {
+    grid-area: descrption;
+  }
+
+  .next {
+    grid-area: next;
+  }
+
+  .prev {
+    grid-area: prev;
+  }
+
+  .backPage {
+    grid-area: backPage;
+    align-self: center;
+  }
+  @media (max-width: 631px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    row-gap: 1rem;
+    grid-template-areas:
+      'image  image'
+      'descrption  descrption'
+      'prev  next  '
+      'backPage  backPage';
+  }
 `
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  grid-area: image;
+`
+
 class Page extends Component {
   state = {
     content: [],
@@ -46,11 +83,11 @@ class Page extends Component {
   componentDidMount() {
     const { data } = this.props
     const { children } = data.markdownRemark.htmlAst
-    let header = 0
+    let header = null
     const remarkHtml = children
       .map(({ tagName, children: val }) => {
         if (tagName === 'h1' || tagName === 'h2') {
-          header++
+          !header ? (header += 1) : (header = 0)
           return {
             header,
             tagName,
@@ -68,7 +105,7 @@ class Page extends Component {
       .filter(element => element !== undefined)
 
     const content = groupBy(remarkHtml, 'header')
-    console.log(content)
+
     const images = data.markdownRemark.frontmatter.projectImages
       ? data.markdownRemark.frontmatter.projectImages.map(
           ({ childImageSharp }) => childImageSharp.fluid
@@ -94,50 +131,65 @@ class Page extends Component {
     })
   }
 
-  contentToHtml = objectHtml => {
-    return objectHtml.map(
-      ({ tagName, text }) => `<${tagName}>${text}</${tagName}>`
+  contentToHtml = element => {
+    console.log(element)
+    return (
+      element &&
+      element.map(({ tagName, text }) => {
+        if (tagName == 'h2') {
+          return <h2>{text}</h2>
+        }
+        if (tagName == 'p') {
+          return <p>{text}</p>
+        }
+      })
     )
   }
 
   render() {
     const { counter, images, content } = this.state
-    const html = content[counter]
-    console.log(content[counter])
+    console.log(content)
+    console.log(images)
+    console.log(counter)
     return (
       <PageWrapper>
         {counter > 0 && images.length ? (
-          <button onClick={this.handlePrev}>
+          <button className="prev" onClick={this.handlePrev}>
             <span>◀️</span>
           </button>
         ) : (
-          <div />
+          <div className="prev" />
         )}
 
         {images.map((image, index) => {
           if (index === counter) {
-            console.log(counter)
             return (
-              <Img
-                key={image.src}
-                fluid={image}
-                style={{
-                  width: '100%',
-                  maxWidth: '300px',
-                  height: '100%',
-                }}
-              />
+              <ImageWrapper>
+                <Img
+                  key={image.src}
+                  fluid={image}
+                  style={{
+                    width: '100%',
+                    maxWidth: '300px',
+                    height: '100%',
+                    margin: '0 auto',
+                  }}
+                />
+              </ImageWrapper>
             )
           }
         })}
-        {}
-        <Link to={`/projects`}> Back to project list</Link>
+        <div className="descrption">{this.contentToHtml(content[counter])}</div>
+
+        <Link className="backPage" to={`/projects`}>
+          Back to project list
+        </Link>
         {counter < images.length - 1 && images.length ? (
-          <button onClick={this.handleNext}>
+          <button className="next" onClick={this.handleNext}>
             <span>▶️</span>
           </button>
         ) : (
-          <div />
+          <div className="next" />
         )}
       </PageWrapper>
     )

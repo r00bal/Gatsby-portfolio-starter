@@ -10,7 +10,7 @@ const ProjectLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   align-items: center;
   justify-items: center;
   justify-content: end;
@@ -19,6 +19,21 @@ const ProjectLayout = styled.div`
   }
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+  }
+`
+
+const ImgWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  max-width: calc(100vw / 3);
+  max-height: calc(100vw / 3);
+  @media (max-width: 1000px) {
+    max-width: calc(100vw / 2);
+    max-height: calc(100vw / 2);
+  }
+  @media (max-width: 600px) {
+    max-width: 100vw;
+    max-height: 100vw;
   }
 `
 
@@ -64,41 +79,35 @@ const Projects = () => (
       return (
         <ProjectLayout>
           {allProjects.edges.map(({ node }) => (
-            // <div
-            //   style={{
-            //     width: '100%',
-            //     display: 'grid',
-            //     alignContent: 'center',
-            //   }}
-            // >
-            <Link
-              key={node.childMarkdownRemark.frontmatter.slug}
-              to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
-              style={{
-                width: '100%',
-                height: '100%',
-                maxWidth: '300px',
-                maxHeight: '300px',
-              }}
-            >
-              <Img
-                src={
-                  node.childMarkdownRemark.frontmatter.img.childImageSharp.sizes
-                    .src
-                }
-                sizes={
-                  node.childMarkdownRemark.frontmatter.img.childImageSharp.sizes
-                }
+            <ImgWrapper>
+              <Link
+                key={node.childMarkdownRemark.frontmatter.slug}
+                to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
                 style={{
-                  width: 'auto',
-                  height: 'auto',
-
-                  maxWidth: '300px',
-                  maxHeight: '300px',
+                  width: '100%',
+                  height: '100%',
+                  // maxWidth: 'calc(100% /3)',
+                  // maxHeight: 'auto',
                 }}
-              />
-            </Link>
-            // </div>
+              >
+                <Img
+                  src={
+                    node.childMarkdownRemark.frontmatter.img.childImageSharp
+                      .sizes.src
+                  }
+                  sizes={
+                    node.childMarkdownRemark.frontmatter.img.childImageSharp
+                      .sizes
+                  }
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    // maxWidth: 'calc((100vw /3) )',
+                    // maxHeight: 'calc((100vw /3)',
+                  }}
+                />
+              </Link>
+            </ImgWrapper>
           ))}
         </ProjectLayout>
       )
