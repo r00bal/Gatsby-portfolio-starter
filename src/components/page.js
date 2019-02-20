@@ -79,9 +79,10 @@ class Page extends Component {
     images: [],
     counter: 0,
   }
+  static getDerivedStateFromProps(props, state) {
+    console.log(props)
 
-  componentDidMount() {
-    const { data } = this.props
+    const { data } = props
     const { children } = data.markdownRemark.htmlAst
     let header = null
     const remarkHtml = children
@@ -111,10 +112,10 @@ class Page extends Component {
           ({ childImageSharp }) => childImageSharp.fluid
         )
       : []
-    this.setState({
+    return {
       content,
       images,
-    })
+    }
   }
 
   handleNext = e => {
@@ -132,7 +133,6 @@ class Page extends Component {
   }
 
   contentToHtml = element => {
-    console.log(element)
     return (
       element &&
       element.map(({ tagName, text }) => {
@@ -148,9 +148,7 @@ class Page extends Component {
 
   render() {
     const { counter, images, content } = this.state
-    console.log(content)
-    console.log(images)
-    console.log(counter)
+
     return (
       <PageWrapper>
         {counter > 0 && images.length ? (
