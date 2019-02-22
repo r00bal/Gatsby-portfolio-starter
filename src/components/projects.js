@@ -62,8 +62,8 @@ const Projects = () => (
                   slug
                   img {
                     childImageSharp {
-                      sizes(maxWidth: 500) {
-                        ...GatsbyImageSharpSizes
+                      fluid(maxWidth: 300, cropFocus: CENTER) {
+                        ...GatsbyImageSharpFluid_noBase64
                       }
                     }
                   }
@@ -86,24 +86,16 @@ const Projects = () => (
                 style={{
                   width: '100%',
                   height: '100%',
-                  // maxWidth: 'calc(100% /3)',
-                  // maxHeight: 'auto',
                 }}
               >
                 <Img
-                  src={
+                  fluid={
                     node.childMarkdownRemark.frontmatter.img.childImageSharp
-                      .sizes.src
-                  }
-                  sizes={
-                    node.childMarkdownRemark.frontmatter.img.childImageSharp
-                      .sizes
+                      .fluid
                   }
                   style={{
                     width: '100%',
                     height: '100%',
-                    // maxWidth: 'calc((100vw /3) )',
-                    // maxHeight: 'calc((100vw /3)',
                   }}
                 />
               </Link>

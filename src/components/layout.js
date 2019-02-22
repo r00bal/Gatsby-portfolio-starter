@@ -43,7 +43,7 @@ const MainLayout = styled.main`
   grid-area: Main;
   width: 100%;
   height: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   text-align: center;
   background: none;
   margin: 0 auto;

@@ -37,6 +37,7 @@ const PageWrapper = styled.div`
     color: black;
     border: none;
     outline: none;
+    background: none;
   }
 
   .descrption {
@@ -81,7 +82,6 @@ class Page extends Component {
   }
   static getDerivedStateFromProps(props, state) {
     console.log(props)
-
     const { data } = props
     const { children } = data.markdownRemark.htmlAst
     let header = null
