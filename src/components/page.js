@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Image from './Image'
+
 import Img from 'gatsby-image'
 import { groupBy } from '../utils/func.js'
 // Static query
@@ -204,7 +204,7 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
-        
+
         slug
         projectImages {
           childImageSharp {
