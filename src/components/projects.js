@@ -5,35 +5,37 @@ import Image from './Image'
 import Img from 'gatsby-image'
 
 const ProjectLayout = styled.div`
-  padding: 1rem;
-  width: 100%;
+  max-width: 93.5rem;
+  margin: 0 auto;
+  padding: 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
   grid-gap: 2rem;
-  align-items: center;
-  justify-items: center;
-  justify-content: end;
-  @media (max-width: 1000px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+
+  @media (max-width: 40rem) {
   }
 `
-
+const ImgInfo = styled.div`
+  display: none;
+`
 const ImgWrapper = styled.div`
-  width: 100%;
+  width: auto;
   height: 100%;
-  max-width: calc(100vw / 3);
-  max-height: calc(100vw / 3);
-  @media (max-width: 1000px) {
-    max-width: calc(100vw / 2);
-    max-height: calc(100vw / 2);
-  }
-  @media (max-width: 600px) {
-    max-width: 100vw;
-    max-height: 100vw;
+  margin: 0;
+  position: relative;
+
+  &:hover ${ImgInfo} {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -59,10 +61,12 @@ const Projects = () => (
             node {
               childMarkdownRemark {
                 frontmatter {
+                  title
+                  description
                   slug
                   img {
                     childImageSharp {
-                      fluid(maxWidth: 300, cropFocus: CENTER) {
+                      fluid(maxWidth: 500, maxHeight: 500, cropFocus: CENTER) {
                         ...GatsbyImageSharpFluid_noBase64
                       }
                     }
@@ -83,21 +87,20 @@ const Projects = () => (
               <Link
                 key={node.childMarkdownRemark.frontmatter.slug}
                 to={`projects${node.childMarkdownRemark.frontmatter.slug}`}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
+                style={{}}
               >
                 <Img
                   fluid={
                     node.childMarkdownRemark.frontmatter.img.childImageSharp
                       .fluid
                   }
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                  }}
+                  style={{}}
                 />
+                <ImgInfo>
+                  <h3>{node.childMarkdownRemark.frontmatter.title}</h3>
+
+                  <p>{node.childMarkdownRemark.frontmatter.description}</p>
+                </ImgInfo>
               </Link>
             </ImgWrapper>
           ))}

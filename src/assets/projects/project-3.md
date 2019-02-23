@@ -1,7 +1,12 @@
 ---
-title: 'ship'
+title: 'Ship'
+description: 'Captain on the board!'
 slug: '/ship'
 img: '../images/project_ship.jpg'
+projectImages:
+  - '../images/project_ship.jpg'
 ---
 
-# this super coool awesome project !!
+## Captin on the board
+
+Sail Sail sail

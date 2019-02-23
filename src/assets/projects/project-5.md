@@ -1,9 +1,12 @@
 ---
-title: 'mkom'
-slug: '/mkom'
-img: '../images/project_mkom.jpg'
+title: 'Stranger Things'
+slug: '/stranger_things'
+description: 'I see dead people'
+img: '../images/project_st.jpg'
+projectImages:
+  - '../images/project_st.jpg'
 ---
 
-# this super coool awesome project !!
+## This super cool serial movie !!
 
-I am thre choosen one
+Eleven kicks asses

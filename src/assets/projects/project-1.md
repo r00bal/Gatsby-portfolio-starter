@@ -1,6 +1,7 @@
 ---
-title: 'Asd'
-slug: '/asd'
+title: 'Indian skull'
+description: 'Think twice if you want to go deeper'
+slug: '/indian_skull'
 img: '../images/project_asd.jpg'
 projectImages:
   - '../images/pulpfiction.jpg'
@@ -9,9 +10,7 @@ projectImages:
 
 ## Pulp fiction is awesome move
 
-The best move ever
-
-Are you for real ?
+The best move ever. Are you for real ?
 
 ## Blade runner is best since fiction ever !!
 

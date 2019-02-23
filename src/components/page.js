@@ -84,11 +84,12 @@ class Page extends Component {
     console.log(props)
     const { data } = props
     const { children } = data.markdownRemark.htmlAst
-    let header = null
+    let header = undefined
+    console.log(children)
     const remarkHtml = children
       .map(({ tagName, children: val }) => {
-        if (tagName === 'h1' || tagName === 'h2') {
-          !header ? (header += 1) : (header = 0)
+        if (tagName === 'h2') {
+          header === undefined ? (header = 0) : header++
           return {
             header,
             tagName,
@@ -104,7 +105,7 @@ class Page extends Component {
         }
       })
       .filter(element => element !== undefined)
-
+    console.log(remarkHtml)
     const content = groupBy(remarkHtml, 'header')
 
     const images = data.markdownRemark.frontmatter.projectImages
@@ -203,6 +204,7 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
+        
         slug
         projectImages {
           childImageSharp {

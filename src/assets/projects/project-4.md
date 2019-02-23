@@ -1,9 +1,12 @@
 ---
-title: 'swnowrds'
-slug: '/snowrds'
+title: 'Japan swoards'
+description: 'I am the chosen one'
+slug: '/japan_swords'
 img: '../images/project_snowrds.jpg'
+projectImages:
+  - '../images/project_snowrds.jpg'
 ---
 
-# this super coool awesome project !!
+## Japan swords
 
-I am thre choosen one
+Very deadly and sharp
