@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Image from './Image'
 import Img from 'gatsby-image'
 
 const ProjectLayout = styled.div`
