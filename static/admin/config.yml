@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: r00bal/Gatsby-portfolio-starter
+  # branch: master Branch to update (optional; defaults to master)
+
+media_folder: 'static/assets/projects'
+public_folder: 'assets/projects'
+
+collections:
+  - name: projects
+    label: Projects
+    editor:
+      preview: true
+    folder: 'assets/projects'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Image', name: 'img', widget: 'image' }
+      - {
+          label: 'Project Images',
+          name: 'projectImages',
+          widget: 'list',
+          field: { label: Image, name: image, widget: image },
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
