@@ -11,9 +11,12 @@ collections:
     label: Projects
     editor:
       preview: true
+    slug: '{{slug}}'
     folder: 'src/assets/projects'
     create: true
     fields:
+      - { name: path, label: Path }
+      - { name: slug, label: slug }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
