@@ -1,5 +1,5 @@
 ---
-title: asd
+title: Project_7
 description: asd
 date: 2019-02-24T19:26:36.664Z
 img: /src/assets/projects/cf929f786cfa317e0dc59c606797389a.jpg
