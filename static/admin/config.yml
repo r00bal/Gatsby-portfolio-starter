@@ -3,8 +3,8 @@ backend:
   repo: r00bal/Gatsby-portfolio-starter
   # branch: master Branch to update (optional; defaults to master)
 
-media_folder: 'static/assets/projects'
-public_folder: 'assets/projects'
+media_folder: 'assets/projects'
+public_folder: '/projects'
 
 collections:
   - name: projects
