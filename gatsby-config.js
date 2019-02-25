@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static/uploads`,
+        name: 'uploads',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -59,6 +66,9 @@ module.exports = {
         pedantic: true,
         // Plugins configs
         plugins: [
+          {
+            resolve: `gatsby-remark-relative-images-v2`,
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
