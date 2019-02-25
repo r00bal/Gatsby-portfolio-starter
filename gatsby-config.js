@@ -17,10 +17,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-plugin-netlify-cms-paths`,
       options: {
-        path: `${__dirname}/static/images/`,
-        name: `images`,
+        // Path to your Netlify CMS config file
+        cmsConfig: `/static/admin/config.yml`,
       },
     },
     {
@@ -66,9 +66,7 @@ module.exports = {
         pedantic: true,
         // Plugins configs
         plugins: [
-          {
-            resolve: `gatsby-remark-relative-images-v2`,
-          },
+          `gatsby-plugin-netlify-cms-paths`,
           {
             resolve: `gatsby-remark-images`,
             options: {
