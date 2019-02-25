@@ -3,20 +3,20 @@ backend:
   repo: r00bal/Gatsby-portfolio-starter
   # branch: master Branch to update (optional; defaults to master)
 
-media_folder: 'src/assets/images'
-public_folder: 'src/assets/projects'
+media_folder: 'static/images/upload'
+public_folder: 'src/assets/images'
 
 collections:
   - name: projects
     label: Projects
     editor:
       preview: true
-    slug: '{{slug}}'
+    slug: '{{path}}'
     folder: 'src/assets/projects'
     create: true
     fields:
       - { name: path, label: Path }
-      - { name: slug, label: slug }
+      - { name: slug, label: Slug }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
