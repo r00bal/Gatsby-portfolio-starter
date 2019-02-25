@@ -3,8 +3,8 @@ backend:
   repo: r00bal/Gatsby-portfolio-starter
   # branch: master Branch to update (optional; defaults to master)
 
-media_folder: 'static/img'
-public_folder: '/img'
+media_folder: 'static/images'
+public_folder: 'src/assets/images'
 
 collections:
   - name: projects
@@ -25,10 +25,16 @@ collections:
           label: 'Project Images',
           name: 'projectImages',
           widget: 'list',
+          field: { label: Image, name: image, widget: image },  
+        }
+        - {
+          label: 'Project Images',
+          name: 'projectImages',
+          widget: 'list',
           fields:
             [
               { label: Image, name: image, widget: image },
-              { label: Text, name: text, widget: text },
+              { label: Text, name: text, widget: markdown },
             ],
         }
       - { label: 'Body', name: 'body', widget: 'markdown' }
