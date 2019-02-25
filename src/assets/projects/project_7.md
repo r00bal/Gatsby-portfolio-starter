@@ -1,5 +1,5 @@
 ---
-path: project_7
+path: project-7
 slug: asdf
 title: asd
 description: qwer
