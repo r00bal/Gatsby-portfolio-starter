@@ -27,14 +27,14 @@ collections:
           widget: 'list',
           field: { label: Image, name: image, widget: image },  
         }
-        - {
-          label: 'Project Images',
-          name: 'projectImages',
-          widget: 'list',
-          fields:
-            [
-              { label: Image, name: image, widget: image },
-              { label: Text, name: text, widget: markdown },
-            ],
-        }
+      - {
+        label: 'Project Test',
+        name: 'projectTest',
+        widget: 'list',
+        fields:
+          [
+            { label: Image, name: image, widget: image },
+            { label: Text, name: text, widget: markdown },
+          ],
+      }
       - { label: 'Body', name: 'body', widget: 'markdown' }
