@@ -1,7 +1,6 @@
 ---
 path: Project-7
-slug: kurwa
-title: qwert
+title: transporter
 description: ghjk
 date: 2019-02-26T22:14:18.313Z
 img: /assets/images/6b737838c08278f27679c71ee68a9467.jpg
