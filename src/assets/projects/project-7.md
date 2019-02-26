@@ -1,5 +1,6 @@
 ---
 path: Project-7
+slug: /camper
 title: transporter
 description: ghjk
 date: 2019-02-26T22:14:18.313Z
