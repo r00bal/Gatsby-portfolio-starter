@@ -11,7 +11,7 @@ collections:
     label: Projects
     editor:
       preview: true
-    slug: '{{slug}}'
+    slug: '{{path}}'
     folder: 'src/assets/projects'
     create: true
     fields:
