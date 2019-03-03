@@ -8,20 +8,14 @@ img: /assets/images/6b737838c08278f27679c71ee68a9467.jpg
 projectImages:
   - /assets/images/6b737838c08278f27679c71ee68a9467.jpg
 projectTest:
-  - header: Header
+  - alt: alt text
+    description: all right
     image: /assets/images/6b737838c08278f27679c71ee68a9467.jpg
-    remark: |-
-      ## Camper t3
-
-      Is what I Love
-    text: Van
-  - header: bulshit
+    title: header
+  - alt: some alt
+    description: Lorem Ipsum
     image: /assets/images/cf929f786cfa317e0dc59c606797389a.jpg
-    remark: |-
-      ## qwert
-
-      adfafges
-    text: as
+    title: Title
 ---
 
 ## cfg
