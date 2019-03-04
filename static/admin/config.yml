@@ -3,8 +3,8 @@ backend:
   repo: r00bal/Gatsby-portfolio-starter
   branch: test-cms
 
-media_folder: 'src/assets/images'
-public_folder: 'assets/images'
+media_folder: static/img
+public_folder: /img
 
 collections:
   - name: projects
