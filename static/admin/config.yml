@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: r00bal/Gatsby-portfolio-starter
-  # branch: master Branch to update (optional; defaults to master)
+  branch: test-cms
 
 media_folder: 'src/assets/images'
 public_folder: 'assets/images'
