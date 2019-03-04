@@ -16,14 +16,7 @@ module.exports = {
         component: require.resolve(`./src/components/layout.js`),
       },
     },
-    {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/assets/images`,
-        name: 'uploads',
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -70,7 +63,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-relative-images`,
             options: {
-              name: 'uploads',
+              name: `images`,
             },
           },
           {
