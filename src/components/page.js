@@ -75,50 +75,6 @@ const ImageWrapper = styled.div`
 `
 
 class Page extends Component {
-  state = {
-    content: [],
-    images: [],
-    counter: 0,
-  }
-  static getDerivedStateFromProps(props, state) {
-    console.log(props)
-    const { data } = props
-    const { children } = data.markdownRemark.htmlAst
-    let header = undefined
-    console.log(children)
-    const remarkHtml = children
-      .map(({ tagName, children: val }) => {
-        if (tagName === 'h2') {
-          header === undefined ? (header = 0) : header++
-          return {
-            header,
-            tagName,
-            text: val[0].value,
-          }
-        }
-        if (tagName === 'p') {
-          return {
-            header,
-            tagName,
-            text: val[0].value,
-          }
-        }
-      })
-      .filter(element => element !== undefined)
-    console.log(remarkHtml)
-    const content = groupBy(remarkHtml, 'header')
-
-    const images = data.markdownRemark.frontmatter.projectImages
-      ? data.markdownRemark.frontmatter.projectImages.map(
-          ({ childImageSharp }) => childImageSharp.fluid
-        )
-      : []
-    return {
-      content,
-      images,
-    }
-  }
-
   handleNext = e => {
     e.preventDefault()
     this.setState({
@@ -133,26 +89,13 @@ class Page extends Component {
     })
   }
 
-  contentToHtml = element => {
-    return (
-      element &&
-      element.map(({ tagName, text }) => {
-        if (tagName == 'h2') {
-          return <h2>{text}</h2>
-        }
-        if (tagName == 'p') {
-          return <p>{text}</p>
-        }
-      })
-    )
-  }
-
   render() {
-    const { counter, images, content } = this.state
+    const { data } = this.props
 
     return (
       <PageWrapper>
-        {counter > 0 && images.length ? (
+        {console.log(data)}
+        {/* {counter > 0 && images.length ? (
           <button className="prev" onClick={this.handlePrev}>
             <span>◀️</span>
           </button>
@@ -189,7 +132,7 @@ class Page extends Component {
           </button>
         ) : (
           <div className="next" />
-        )}
+        )} */}
       </PageWrapper>
     )
   }
@@ -204,12 +147,24 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
-
         slug
-        projectImages {
+        description
+        img {
           childImageSharp {
-            fluid(maxWidth: 500) {
-              ...GatsbyImageSharpFluid
+            fluid {
+              src
+            }
+          }
+        }
+        projects {
+          alt
+          title
+          description
+          image {
+            childImageSharp {
+              fluid {
+                src
+              }
             }
           }
         }
