@@ -75,6 +75,10 @@ const ImageWrapper = styled.div`
 `
 
 class Page extends Component {
+  state = {
+    counter: 0,
+  }
+
   handleNext = e => {
     e.preventDefault()
     this.setState({
@@ -90,12 +94,46 @@ class Page extends Component {
   }
 
   render() {
-    const { data } = this.props
+    const { counter } = this.state
+    const max = this.props.data.markdownRemark.frontmatter.projects.length
+    const {
+      title,
+      alt,
+      description,
+      image,
+    } = this.props.data.markdownRemark.frontmatter.projects[counter]
 
     return (
       <PageWrapper>
-        {console.log(data)}
-        {/* {counter > 0 && images.length ? (
+        {console.log(title, alt, description, image, max)}
+        {counter > 0 ? (
+          <button className="prev" onClick={this.handlePrev}>
+            <span>◀️</span>
+          </button>
+        ) : (
+          <div className="prev" />
+        )}
+        <ImageWrapper>
+          <Img
+            key={image.childImageSharp.fluid.src}
+            fluid={image.childImageSharp.fluid}
+            style={{
+              width: '100%',
+              maxWidth: '300px',
+              height: '100%',
+              margin: '0 auto',
+            }}
+          />
+        </ImageWrapper>
+
+        {counter < max - 1 ? (
+          <button className="next" onClick={this.handleNext}>
+            <span>▶️</span>
+          </button>
+        ) : (
+          <div className="next" />
+        )}
+        {/*  {counter > 0  ? (
           <button className="prev" onClick={this.handlePrev}>
             <span>◀️</span>
           </button>
@@ -126,7 +164,7 @@ class Page extends Component {
         <Link className="backPage" to={`/projects`}>
           Back to project list
         </Link>
-        {counter < images.length - 1 && images.length ? (
+        {counter < max ? (
           <button className="next" onClick={this.handleNext}>
             <span>▶️</span>
           </button>
@@ -149,21 +187,15 @@ export const query = graphql`
         title
         slug
         description
-        img {
-          childImageSharp {
-            fluid {
-              src
-            }
-          }
-        }
+
         projects {
           alt
           title
           description
           image {
             childImageSharp {
-              fluid {
-                src
+              fluid(maxWidth: 500, maxHeight: 500, cropFocus: CENTER) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
