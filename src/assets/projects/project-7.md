@@ -10,9 +10,9 @@ projects:
     title: asd
     description: asd
     image: ../images/6b737838c08278f27679c71ee68a9467.jpg
-  - alt: asd
-    title: asd
-    description: asd
+  - alt: dsa
+    title: dsa
+    description: dsa
     image: ../images/6b737838c08278f27679c71ee68a9467.jpg
 ---
 

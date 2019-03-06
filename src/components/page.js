@@ -123,6 +123,7 @@ class Page extends Component {
               height: '100%',
               margin: '0 auto',
             }}
+            alt={alt}
           />
         </ImageWrapper>
 
@@ -133,6 +134,14 @@ class Page extends Component {
         ) : (
           <div className="next" />
         )}
+        <div className="descrption">
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </div>
+
+        <Link className="backPage" to={`/projects`}>
+          Back to project list
+        </Link>
         {/*  {counter > 0  ? (
           <button className="prev" onClick={this.handlePrev}>
             <span>◀️</span>
