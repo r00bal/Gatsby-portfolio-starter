@@ -196,7 +196,6 @@ export const query = graphql`
         title
         slug
         description
-
         projects {
           alt
           title

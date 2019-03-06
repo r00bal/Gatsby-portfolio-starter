@@ -63,7 +63,7 @@ const Projects = () => (
                   title
                   description
                   slug
-                  img {
+                  frontImage {
                     childImageSharp {
                       fluid(maxWidth: 500, maxHeight: 500, cropFocus: CENTER) {
                         ...GatsbyImageSharpFluid_noBase64
