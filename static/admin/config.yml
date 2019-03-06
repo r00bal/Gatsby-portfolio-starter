@@ -19,17 +19,11 @@ collections:
       - { name: slug, label: Slug }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Image', name: 'img', widget: 'image' }
+      - { label: 'FrontImage', name: 'frontImage', widget: 'image' }
       - {
-          label: 'Project Images',
-          name: 'projectImages',
-          widget: 'list',
-          field: { label: Image, name: image, widget: image },
-        }
-      - {
-          label: 'Project Test',
-          name: 'projectTest',
-          widget: 'list',
+          label: 'Projects',
+          name: 'projects',
+         widget: 'list',
           fields:
             [
               { label: Alt, name: alt, widget: text },
@@ -37,5 +31,5 @@ collections:
               { label: Description, name: description, widget: text },
               { label: Image, name: image, widget: image },
             ],
-        }
+      
       - { label: 'Body', name: 'body', widget: 'markdown' }
