@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: r00bal/Gatsby-portfolio-starter
   branch: test-cms
 
 media_folder: static/images
