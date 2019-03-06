@@ -202,7 +202,7 @@ export const query = graphql`
           description
           image {
             childImageSharp {
-              fluid(maxWidth: 500, maxHeight: 500, cropFocus: CENTER) {
+              fluid(maxWidth: 1000) {
                 ...GatsbyImageSharpFluid
               }
             }
