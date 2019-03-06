@@ -76,47 +76,7 @@ const ImageWrapper = styled.div`
 
 class Page extends Component {
   state = {
-    content: [],
-    images: [],
     counter: 0,
-  }
-  static getDerivedStateFromProps(props, state) {
-    console.log(props)
-    const { data } = props
-    const { children } = data.markdownRemark.htmlAst
-    let header = undefined
-    console.log(children)
-    const remarkHtml = children
-      .map(({ tagName, children: val }) => {
-        if (tagName === 'h2') {
-          header === undefined ? (header = 0) : header++
-          return {
-            header,
-            tagName,
-            text: val[0].value,
-          }
-        }
-        if (tagName === 'p') {
-          return {
-            header,
-            tagName,
-            text: val[0].value,
-          }
-        }
-      })
-      .filter(element => element !== undefined)
-    console.log(remarkHtml)
-    const content = groupBy(remarkHtml, 'header')
-
-    const images = data.markdownRemark.frontmatter.projectImages
-      ? data.markdownRemark.frontmatter.projectImages.map(
-          ({ childImageSharp }) => childImageSharp.fluid
-        )
-      : []
-    return {
-      content,
-      images,
-    }
   }
 
   handleNext = e => {
@@ -133,26 +93,56 @@ class Page extends Component {
     })
   }
 
-  contentToHtml = element => {
-    return (
-      element &&
-      element.map(({ tagName, text }) => {
-        if (tagName == 'h2') {
-          return <h2>{text}</h2>
-        }
-        if (tagName == 'p') {
-          return <p>{text}</p>
-        }
-      })
-    )
-  }
-
   render() {
-    const { counter, images, content } = this.state
+    const { counter } = this.state
+    const max = this.props.data.markdownRemark.frontmatter.projects.length
+    const {
+      title,
+      alt,
+      description,
+      image,
+    } = this.props.data.markdownRemark.frontmatter.projects[counter]
 
     return (
       <PageWrapper>
-        {counter > 0 && images.length ? (
+        {console.log(title, alt, description, image, max)}
+        {counter > 0 ? (
+          <button className="prev" onClick={this.handlePrev}>
+            <span>◀️</span>
+          </button>
+        ) : (
+          <div className="prev" />
+        )}
+        <ImageWrapper>
+          <Img
+            key={image.childImageSharp.fluid.src}
+            fluid={image.childImageSharp.fluid}
+            style={{
+              width: '100%',
+              maxWidth: '300px',
+              height: '100%',
+              margin: '0 auto',
+            }}
+            alt={alt}
+          />
+        </ImageWrapper>
+
+        {counter < max - 1 ? (
+          <button className="next" onClick={this.handleNext}>
+            <span>▶️</span>
+          </button>
+        ) : (
+          <div className="next" />
+        )}
+        <div className="descrption">
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </div>
+
+        <Link className="backPage" to={`/projects`}>
+          Back to project list
+        </Link>
+        {/*  {counter > 0  ? (
           <button className="prev" onClick={this.handlePrev}>
             <span>◀️</span>
           </button>
@@ -183,13 +173,13 @@ class Page extends Component {
         <Link className="backPage" to={`/projects`}>
           Back to project list
         </Link>
-        {counter < images.length - 1 && images.length ? (
+        {counter < max ? (
           <button className="next" onClick={this.handleNext}>
             <span>▶️</span>
           </button>
         ) : (
           <div className="next" />
-        )}
+        )} */}
       </PageWrapper>
     )
   }
@@ -204,12 +194,17 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
-
         slug
-        projectImages {
-          childImageSharp {
-            fluid(maxWidth: 500) {
-              ...GatsbyImageSharpFluid
+        description
+        projects {
+          alt
+          title
+          description
+          image {
+            childImageSharp {
+              fluid(maxWidth: 500, maxHeight: 500, cropFocus: CENTER) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

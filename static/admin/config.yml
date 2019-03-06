@@ -1,35 +1,28 @@
 backend:
   name: github
   repo: r00bal/Gatsby-portfolio-starter
-  # branch: master Branch to update (optional; defaults to master)
+  branch: test-cms
 
-media_folder: 'src/assets/images'
-public_folder: 'assets/images'
+media_folder: static/images
+public_folder: /images
 
 collections:
   - name: projects
     label: Projects
     editor:
       preview: true
-    slug: '{{path}}'
+    slug: '{{slug}}'
     folder: 'src/assets/projects'
     create: true
     fields:
-      - { name: path, label: Path }
-      - { name: slug, label: Slug }
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { name: slug, label: Slug }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Image', name: 'img', widget: 'image' }
+      - { label: 'FrontImage', name: 'front', widget: 'image' }
       - {
-          label: 'Project Images',
-          name: 'projectImages',
-          widget: 'list',
-          field: { label: Image, name: image, widget: image },
-        }
-      - {
-          label: 'Project Test',
-          name: 'projectTest',
+          label: 'Projects',
+          name: 'projects',
           widget: 'list',
           fields:
             [
@@ -39,4 +32,4 @@ collections:
               { label: Image, name: image, widget: image },
             ],
         }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      # - { label: 'Body', name: 'body', widget: 'markdown' }

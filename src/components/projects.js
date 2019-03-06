@@ -63,7 +63,7 @@ const Projects = () => (
                   title
                   description
                   slug
-                  img {
+                  front {
                     childImageSharp {
                       fluid(maxWidth: 500, maxHeight: 500, cropFocus: CENTER) {
                         ...GatsbyImageSharpFluid_noBase64
@@ -90,7 +90,7 @@ const Projects = () => (
               >
                 <Img
                   fluid={
-                    node.childMarkdownRemark.frontmatter.img.childImageSharp
+                    node.childMarkdownRemark.frontmatter.front.childImageSharp
                       .fluid
                   }
                   style={{}}
