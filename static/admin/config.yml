@@ -32,5 +32,4 @@ collections:
               { label: Image, name: image, widget: image },
             ],
         }
-
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      # - { label: 'Body', name: 'body', widget: 'markdown' }
