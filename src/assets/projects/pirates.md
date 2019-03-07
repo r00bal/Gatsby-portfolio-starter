@@ -9,5 +9,9 @@ projects:
     title: Indiana
     description: Hok !
     image: /images/2b56b7c35a48167de12a48f0946d0356.jpg
+  - alt: as
+    title: Ship
+    description: Sail to the end of the world
+    image: /images/202199eaefe4bd82f90098bee576964b.jpg
 ---
 
