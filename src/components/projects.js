@@ -54,7 +54,7 @@ const Projects = () => (
           filter: {
             internal: { mediaType: { eq: "text/markdown" } }
             sourceInstanceName: { eq: "projects" }
-          }
+          } sort: {fields: [birthTime], order: DESC}
         ) {
           edges {
             node {
