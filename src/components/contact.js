@@ -20,27 +20,29 @@ const Contact = () => (
             __html: markdownRemark.html,
           }}
         />
-        <form
-          name="contact-form"
-          method="POST"
-          data-netlify-recaptcha="true"
-          data-netlify="true"
-        >
-          <p>
-            <label>
-              Email: <input type="text" name="name" />
-            </label>
-          </p>
-          <p>
-            <label>
-              Message: <textarea name="message" />
-            </label>
-          </p>
-          <div data-netlify-recaptcha="true" />
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
+        <div>
+          <form
+            name="contact-form"
+            method="POST"
+            data-netlify-recaptcha="true"
+            data-netlify="true"
+          >
+            <p>
+              <label>
+                Email: <input type="text" name="name" />
+              </label>
+            </p>
+            <p>
+              <label>
+                Message: <textarea name="message" />
+              </label>
+            </p>
+            <div data-netlify-recaptcha="true" />
+            <p>
+              <button type="submit">Send</button>
+            </p>
+          </form>
+        </div>
       </>
     )}
   />
