@@ -22,12 +22,28 @@ const Contact = () => (
         />
         <form
           name="contact"
-          method="post"
+          method="POST"
+          netlify-honeypot="bot-field"
           data-netlify="true"
-          data-netlify-honeypot="bot-field"
         >
-          <input name="name" placeholder="Your Name" type="text" />
-          <button>Send</button>
+          <p class="hidden">
+            <label>
+              Don’t fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+          <p>
+            <label>
+              Email: <input type="text" name="email" />
+            </label>
+          </p>
+          <p>
+            <label>
+              Message: <textarea name="message" />
+            </label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
         </form>
       </>
     )}
