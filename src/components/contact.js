@@ -21,7 +21,7 @@ const Contact = () => (
           }}
         />
         <form
-          name="contact"
+          name="contact-form"
           method="POST"
           data-netlify-recaptcha="true"
           data-netlify="true"
