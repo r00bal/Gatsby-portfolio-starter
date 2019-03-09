@@ -34,17 +34,21 @@ const FormWrapper = styled.div`
   button {
     padding: 19px 39px 18px 39px;
     color: #fff;
-    background-color: #4bc970;
-    background-color: ${props => props.theme.color};
+    /* background-color: #4bc970; */
+    background-color: ${props => props.theme.BgDarkSky};
     font-size: 18px;
     text-align: center;
     font-style: normal;
     border-radius: 5px;
     width: 100%;
-    border: 1px solid #3ac162;
+    /* border: 1px solid #3ac162; */
+    border: none;
     border-width: 1px 1px 3px;
     box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
     margin-bottom: 10px;
+    &:hover {
+      background-color: #4bc970;
+    }
   }
 
   fieldset {
@@ -72,13 +76,19 @@ const Contact = () => (
     `}
     render={({ markdownRemark }) => (
       <FormWrapper>
+        {console.log(markdownRemark)}
         <form
           name="contact"
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
-          <h1 />
+          <h1
+            dangerouslySetInnerHTML={{
+              __html: markdownRemark.html,
+            }}
+          />
+
           <fieldset>
             <input type="hidden" name="form-name" value="contact" />
             <p>
