@@ -8,12 +8,15 @@ import { rhythm } from '../utils/typography'
 import Nav from './nav'
 import Header from './header'
 import './layout.css'
-
+// ${props => props.theme.maxWidth};
 const theme = {
-  hover: '#FFBCA6',
-  BgOpenMeny: '#A4B5CC',
-  backgroundColor: '#4D6E99',
-  BgMenu: '#E6FEFF',
+  Hover: '#FFBCA6',
+  BgOpenMenu: '#A4B5CC',
+  BgDarkSky: '#4D6E99',
+  BgLightSky: '#E6FEFF',
+  BgGray: '#e8eeef',
+  Color: '#8a97a0', //color: #797979;
+  MaxWidth: '1000px',
 }
 
 const LayoutWrapper = styled.div`
@@ -56,7 +59,7 @@ const Footer = styled.footer`
   width: 100%;
   margin: 0;
   text-align: center;
-  color: #797979;
+  color: ${props => props.theme.Color};
 `
 
 class Layout extends Component {

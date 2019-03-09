@@ -8,7 +8,7 @@ const NavStyles = styled.nav`
   grid-area: Sidebar;
   width: 60%;
   height: 100%;
-  background: lightcyan;
+  background: ${props => props.theme.BgLightSky};
   margin: 0;
   padding: ${rhythm(1)};
   display: flex;
@@ -33,11 +33,11 @@ const NavStyles = styled.nav`
   }
 
   a {
-    color: #797979;
+    color: ${props => props.theme.Color};
     text-decoration: none;
 
     &:hover {
-      color: salmon;
+      color: ${props => props.theme.Hover};
     }
   }
 `

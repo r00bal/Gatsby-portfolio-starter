@@ -47,7 +47,7 @@ const HeaderContainer = styled.div`
       white-space: nowrap;
     }
     &:hover {
-      color: salmon !important;
+      color: ${props => props.theme.Hover} !important;
     }
   }
 `

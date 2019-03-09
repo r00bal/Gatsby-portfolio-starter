@@ -24,7 +24,7 @@ const PageWrapper = styled.div`
   grid-template-columns: 50px 1fr 1fr 50px;
   grid-template-rows: 500px 100px;
   grid-template-areas:
-    'prev image descrption next'
+    'prev image description next'
     '....  backPage backPage ....';
   grid-gap: 1rem;
   align-items: center;
@@ -34,14 +34,14 @@ const PageWrapper = styled.div`
     font-size: 3rem;
     margin: 0;
     padding: 0;
-    color: black;
+    color: inherit;
     border: none;
     outline: none;
     background: none;
   }
 
-  .descrption {
-    grid-area: descrption;
+  .description {
+    grid-area: description;
   }
 
   .next {
@@ -62,7 +62,7 @@ const PageWrapper = styled.div`
     row-gap: 1rem;
     grid-template-areas:
       'image  image'
-      'descrption  descrption'
+      'description  description'
       'prev  next  '
       'backPage  backPage';
   }
@@ -134,7 +134,7 @@ class Page extends Component {
         ) : (
           <div className="next" />
         )}
-        <div className="descrption">
+        <div className="description">
           <h1>{title}</h1>
           <p>{description}</p>
         </div>
@@ -168,7 +168,7 @@ class Page extends Component {
             )
           }
         })}
-        <div className="descrption">{this.contentToHtml(content[counter])}</div>
+        <div className="description">{this.contentToHtml(content[counter])}</div>
 
         <Link className="backPage" to={`/projects`}>
           Back to project list
