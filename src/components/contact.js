@@ -35,7 +35,7 @@ const FormWrapper = styled.div`
     padding: 19px 39px 18px 39px;
     color: #fff;
     /* background-color: #4bc970; #4bc970; */
-    background-color: ${props => props.theme.BgDarkSky};
+    background-color: ${props => props.theme.Color};
     font-size: 18px;
     text-align: center;
     font-style: normal;
@@ -47,8 +47,9 @@ const FormWrapper = styled.div`
     box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
     margin-bottom: 10px;
     &:hover {
+      /* background-color: ${props => props.theme.BgLightSky}; */
       background-color: #8dffc3;
-      color: #263f40;
+      color: ${props => props.theme.Color};
     }
   }
 
