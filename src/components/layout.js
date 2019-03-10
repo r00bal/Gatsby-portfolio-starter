@@ -13,7 +13,7 @@ const theme = {
   Hover: '#FFBCA6',
   BgOpenMenu: '#A4B5CC',
   BgDarkSky: '#4D6E99',
-  BgLightSky: '#E6FEFF',
+  BgLightSky: '#99FBFF', //'#E6FEFF', #80E8CF, #8DFFC3, #80C9E8, #8DBEFF, #FFB3E5, #263F40
   BgGray: '#e8eeef',
   Color: '#8a97a0', //color: #797979;
   MaxWidth: '1000px',
