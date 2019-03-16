@@ -1,0 +1,45 @@
+.st0 {
+    fill: #29abe2
+}
+
+.st1 {
+    fill: #e6e6e6
+}
+
+.st2 {
+    fill: #666
+}
+
+.st3 {
+    fill: #d6d6d6
+}
+
+.st4 {
+    fill: #999
+}
+
+.st5,
+.st6 {
+    stroke: #000;
+    stroke-width: 5e-2;
+    stroke-miterlimit: 10
+}
+
+.st6 {
+    fill: #4d4d4d
+}
+
+.st7 {
+    fill: gray
+}
+
+.st8 {
+    stroke-width: 5e-2
+}
+
+.st8,
+.st9 {
+    fill: none;
+    stroke: #000;
+    stroke-miterlimit: 10
+}

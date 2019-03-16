@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import './layout.css'
 import styled, { ThemeProvider, InjectGlobal } from 'styled-components'
-import { Transition, Spring, config } from 'react-spring'
+import { Transition, Spring, config } from 'react-spring/renderprops'
 import { rhythm } from '../utils/typography'
 
 import Nav from './nav'
 import Header from './header'
-import './layout.css'
+
 // ${props => props.theme.maxWidth};
 const theme = {
   Hover: '#FFC199', //'#FFE2D9', //'#FFBCA6',
