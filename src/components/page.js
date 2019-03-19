@@ -65,6 +65,53 @@ const ImageWrapper = styled.div`
   grid-area: image;
 `
 
+export const ProjectPageTemplate = ({
+  title,
+  alt,
+  description,
+  image,
+  count,
+  setCount,
+  max,
+}) => (
+  <PageWrapper>
+    {count > 0 ? (
+      <button className="prev" onClick={() => setCount(count - 1)}>
+        <span>◀️</span>
+      </button>
+    ) : (
+      <div className="prev" />
+    )}
+    <ImageWrapper>
+      <Img
+        key={!!image.childImageSharp ? image.childImageSharp.fluid.src : image}
+        fluid={!!image.childImageSharp ? image.childImageSharp.fluid : image}
+        style={{
+          width: '100%',
+          maxWidth: '300px',
+          height: '100%',
+          margin: '0 auto',
+        }}
+        alt={alt}
+      />
+    </ImageWrapper>
+    {count < max - 1 ? (
+      <button className="next" onClick={() => setCount(count + 1)}>
+        <span>▶️</span>
+      </button>
+    ) : (
+      <div className="next" />
+    )}
+    <div className="description">
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+    <Link className="backPage" to={`/projects`}>
+      Back to project list
+    </Link>
+  </PageWrapper>
+)
+
 const Page = ({ data }) => {
   const [count, setCount] = useState(0)
   const max = data.markdownRemark.frontmatter.projects.length
@@ -76,43 +123,17 @@ const Page = ({ data }) => {
   } = data.markdownRemark.frontmatter.projects[count]
 
   return (
-    <PageWrapper>
-      {console.log(data)}
-      {count > 0 ? (
-        <button className="prev" onClick={() => setCount(count - 1)}>
-          <span>◀️</span>
-        </button>
-      ) : (
-        <div className="prev" />
-      )}
-      <ImageWrapper>
-        <Img
-          key={image.childImageSharp.fluid.src}
-          fluid={image.childImageSharp.fluid}
-          style={{
-            width: '100%',
-            maxWidth: '300px',
-            height: '100%',
-            margin: '0 auto',
-          }}
-          alt={alt}
-        />
-      </ImageWrapper>
-      {count < max - 1 ? (
-        <button className="next" onClick={() => setCount(count + 1)}>
-          <span>▶️</span>
-        </button>
-      ) : (
-        <div className="next" />
-      )}
-      <div className="description">
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </div>
-      <Link className="backPage" to={`/projects`}>
-        Back to project list
-      </Link>
-    </PageWrapper>
+    <>
+      <ProjectPageTemplate
+        count={count}
+        title={title}
+        alt={alt}
+        description={description}
+        image={image}
+        setCount={setCount}
+        max={max}
+      />
+    </>
   )
 }
 
